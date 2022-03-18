@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.hsc {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px;
+}
+
+.highscore {
+    text-decoration-line: none;
+    color: #f300fc;
+}
+
+.highscore:hover {
+    text-decoration-line: underline;
+    color: rgb(132, 0, 255);
+}
