@@ -8,10 +8,40 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
     <title>Challenge 4 | Quiz</title>
 </head>
-<body>
+<body onload="showWelcome()">
     <div class="hsc">
-        <a href="" class="highscore">View high scores</a>
+        <a href="javascript:highscore()" class="highscore">View high scores</a>
         <p id="countdown"></p>
+    </div>
+
+    <div id="welcome">
+        <h1>Coding Quiz Challenge</h1>
+        <p>This quiz consists of questions to test your basic understanding HTML, CSS, and Javascript. Your timer will deduct 5 seconds for every wrong answer. Good luck!</p>
+        <button onclick="showQuiz()">Start Quiz</button>
+    </div>
+
+    <div id="quiz">
+        <h1 id="question"></h1>
+        <button id="btn1"></button><br>
+        <button id="btn2"></button><br>
+        <button id="btn3"></button><br>
+        <button id="btn4"></button><br>
+        <h2 id="wrong"></h2>
+    </div>
+
+    <div id="score">
+        <h1>All done!</h1>
+        <p id="totalScore"></p><br>
+        <p>Enter your initials:</p>
+        <input type="text" id="initials">
+        <button onclick="addScore()">submit</button>
+    </div>
+
+    <div id="highscore">
+        <h1>High scores</h1>
+        <ul id="names"></ul>
+        <button id="back" onclick="goBack()">go back</button>
+        <button id="clear" onclick="clearScores()">clear all scores</button>
     </div>
 
   <script type="text/javascript" src="assets/js/script.js" ></script>

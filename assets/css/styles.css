@@ -3,6 +3,21 @@
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+
+h1 {
+    margin:auto; width:50%; text-align:center;
+}
+
+h2 {
+    border-top: 1px solid #ccc; 
+    font-style: italic; 
+    color: #ccc;
+}
+
+#nameList li {
+    padding:5px; margin-left:35px; background-color:rgb(210, 163, 253)
+}
+
 .hsc {
     display: flex;
     justify-content: space-between;
@@ -17,4 +32,34 @@
 .highscore:hover {
     text-decoration-line: underline;
     color: rgb(132, 0, 255);
+}
+
+#welcome {
+    text-align: center;
+    width: 75%;
+    margin: auto;
+}
+
+#quiz {
+    margin: auto;
+    width: 50%;
+}
+
+#quiz button {
+    padding:15px 25px;
+    color: white;
+    margin:10px;
+    background-color:rgb(132, 0, 255); 
+    border-radius: 12px; 
+    width: 100%; 
+    text-align: left;
+}
+
+#score {
+    margin: auto;
+    width: 50%;
+}
+
+#score p {
+display: inline;
 }
