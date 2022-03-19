@@ -14,8 +14,15 @@ h2 {
     color: #ccc;
 }
 
-#nameList li {
-    padding:5px; margin-left:35px; background-color:rgb(210, 163, 253)
+button {
+    background-color: rgb(132, 0, 255);
+    padding: 5px 25px;
+    color: white;
+    border-radius: 8px; 
+}
+
+button:hover {
+    background-color: #f300fc;
 }
 
 .hsc {
@@ -55,11 +62,30 @@ h2 {
     text-align: left;
 }
 
+#quiz button:hover {
+    background-color: #f300fc;
+}
+
 #score {
     margin: auto;
     width: 50%;
 }
 
 #score p {
-display: inline;
+    display: inline;
+}
+
+#highscore {
+    margin: auto;
+    width: 50%;
+}
+
+#names {
+    background-color:rgb(210, 163, 253);
+}
+
+#names li {
+    padding:5px;
+    list-style: none;
+    font-size: 20px;
 }

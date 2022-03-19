@@ -153,26 +153,28 @@ function addScore() {
 
   highscore();
 }
-
+// ---------------------------------------------------------------------------------------------------------------------
 // HIGHSCORES FUNCTION
 function getAllScores() {
   var nameList = document.getElementById('names');
 
   var keys = Object.keys(localStorage);
+  var finalScore = Object.values(localStorage);
   var keyLength = keys.length;
+  var valueLength = finalScore.length;
   while(keyLength--) {
     var name = document.createElement('li');
-    name.textContent = localStorage.getItem(keys[keyLength])
-    nameList.appendChild(name);
+    name.textContent = localStorage.getItem(keys[keyLength], finalScore[valueLength])
+    nameList.appendChild(name, finalScore);
   }
 }
-
+// ---------------------------------------------------------------------------------------------------------------------
 function goBack() {
   showWelcome();
 }
 
 function clearScores() {
-  storage.clear();
+  localStorage.clear();
 }
 
 // TIMER FUNCTION
