@@ -72,6 +72,7 @@ function highscore() {
   document.getElementById('quiz').style.display = "none";
   document.getElementById('highscore').style.display = "block";
   document.getElementById('countdown').style.display = "none";
+  document.getElementById('highscoreLink').style.display = "none";
 
   getAllScores();
 }
@@ -146,29 +147,33 @@ function addScore() {
   addName.textContent = initials;
   nameList.appendChild(addName);
 
-  if(localStorage.getItem(initials + scoreNumber) > finalScore) {
+  // checks for a previous score and if greater than previous
+  if(localStorage.getItem(initials) && localStorage.getItem(initials) > finalScore) {
+    localStorage.setItem(initials, finalScore);
+  }
+  // for first time submitting score
+  else if (!localStorage.getItem(initials)){
     localStorage.setItem(initials, finalScore);
   }
   scoreNumber++;
-
   highscore();
 }
-// ---------------------------------------------------------------------------------------------------------------------
+
 // HIGHSCORES FUNCTION
 function getAllScores() {
   var nameList = document.getElementById('names');
 
   var keys = Object.keys(localStorage);
-  var finalScore = Object.values(localStorage);
   var keyLength = keys.length;
-  var valueLength = finalScore.length;
   while(keyLength--) {
-    var name = document.createElement('li');
-    name.textContent = localStorage.getItem(keys[keyLength], finalScore[valueLength])
-    nameList.appendChild(name, finalScore);
+    var list = document.createElement('li');
+    var name = document.createElement('p');
+    list.textcontent = name.textContent;
+    name.textContent = localStorage.getItem(keys[keyLength]) //gets name and score
+    nameList.appendChild(name);
   }
 }
-// ---------------------------------------------------------------------------------------------------------------------
+
 function goBack() {
   showWelcome();
 }
