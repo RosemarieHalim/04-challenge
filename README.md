@@ -37,7 +37,7 @@ https://rosemariehalim.github.io/04-challenge/
 
 ---
 
-## Challenge 3.0
+## Challenge 4.0
 
 * planned out code
 * linked css and js to HTML file
