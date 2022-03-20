@@ -42,8 +42,8 @@ https://rosemariehalim.github.io/04-challenge/
 * planned out code
 * linked css and js to HTML file
 * created develop branch
-* created password length function with while loop statement
-* added the functions and boolians for the lowercase, uppercase, numeric, and/or special characters
-* created password generation function that provides a warning pop-up when neither boolian is true
+* created base quiz function
+* added the functions for scores and timer
+* created main page and highscore page functions and updated html for pages
 * tested and fixed broken code
 * merged develop branch into main and pushed to GitHub

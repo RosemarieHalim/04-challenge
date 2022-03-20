@@ -82,10 +82,19 @@ button:hover {
 
 #names {
     background-color:rgb(210, 163, 253);
+    margin: 15px 0;
+    padding: 0;
 }
 
 #names li {
-    padding:5px;
+    margin: 0 25px;
     list-style: none;
     font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgb(122, 24, 179)
+}
+
+#names li:first-child {
+    border-top: 0;
 }

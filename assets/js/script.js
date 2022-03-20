@@ -1,7 +1,3 @@
-// Start button to begin countdown and 4/5 sets of questions with true false buttons, will output when wrong/right
-// end of timer will show highscore and will ask to submit initials
-// go to highscores (is time left ) that show list of scores and initials along with two buttons, 'go back' and 'clear high scores'
-
 // ELEMENTS for questions
 var h1El = document.getElementById("question");
 var h2El = document.getElementById("wrong");
@@ -15,13 +11,13 @@ var questionNumber = 0;
 
 // ELEMENTS for highscores
 var listEl = document.getElementById('names')
-// var liEl = document.createElement('li');
 var backBtn = document.getElementById('back');
 var clearBtn = document.getElementById('clear');
 var scoreNumber = 1;
 
 // ELEMENT For timer
 var timerEl = document.getElementById('countdown');
+var timeInterval;
 var timeLeft = 60;
 var finalScore;
 
@@ -40,6 +36,7 @@ function showWelcome() {
   document.getElementById('quiz').style.display = "none";
   document.getElementById('score').style.display = "none";
   document.getElementById('highscore').style.display = "none";
+  document.getElementById('highscoreLink').style.display = "block";
 }
 
 function showQuiz() {
@@ -47,6 +44,7 @@ function showQuiz() {
   document.getElementById('score').style.display = "none";
   document.getElementById('quiz').style.display = "block";
   document.getElementById('highscore').style.display = "none";
+  document.getElementById('countdown').style.display = "block";
   
   startTimer();
 
@@ -61,7 +59,8 @@ function showScore() {
   document.getElementById('highscore').style.display = "none";
   document.getElementById('countdown').style.display = "none";
 
-  finalScore = timeLeft; 
+  finalScore = timeLeft;
+  timeLeft = 60;
 
   scoreEl.textContent = "Your total score is " + finalScore;
 }
@@ -131,6 +130,7 @@ function nextQuestion() {
   questionNumber++;
 
   if(questionNumber + 1 == questionList.length) { //checks if we hit last question
+    stopTime();
     showScore();
   }
 
@@ -141,11 +141,6 @@ function nextQuestion() {
 // YOUR SCORE FUNCTION
 function addScore() {
   var initials = document.getElementById("initials").value;
-  var nameList = document.getElementById("names");
-  var addName = document.createElement('li');
-
-  addName.textContent = initials;
-  nameList.appendChild(addName);
 
   // checks for a previous score and if greater than previous
   if(localStorage.getItem(initials) && localStorage.getItem(initials) > finalScore) {
@@ -166,16 +161,21 @@ function getAllScores() {
   var keys = Object.keys(localStorage);
   var keyLength = keys.length;
   while(keyLength--) {
-    var list = document.createElement('li');
+    var nameEl = document.createElement('li');
     var name = document.createElement('p');
-    list.textcontent = name.textContent;
-    name.textContent = localStorage.getItem(keys[keyLength]) //gets name and score
-    nameList.appendChild(name);
+    var score = document.createElement('p');
+
+    name.textContent = keys[keyLength]
+    score.textContent = localStorage.getItem(keys[keyLength]); //gets name and score
+    nameEl.appendChild(name);
+    nameEl.appendChild(score);
+    nameList.appendChild(nameEl);
   }
 }
 
 function goBack() {
   showWelcome();
+  questionNumber = 0;
 }
 
 function clearScores() {
@@ -185,21 +185,25 @@ function clearScores() {
 // TIMER FUNCTION
 function startTimer() {
   // the `setInterval()` method to call a function to be executed every 1000 milliseconds
-  var timeInterval = setInterval(() => {
+ timeInterval = setInterval(() => {
 
     if (timeLeft > 0){
       timerEl.textContent = timeLeft;
       timeLeft--;
     }
     else if (timeLeft === 0) {
-      timerEl.textContent = '';
       clearInterval(timeInterval);
-      highscore();
+      timeLeft = 60;
+      addScore();
     }
   },
   1000);
   }
 
-  function loseTime() {
+function loseTime() {
     timeLeft -= 5;
   }
+
+function stopTime() {
+  clearInterval(timeInterval);
+}
